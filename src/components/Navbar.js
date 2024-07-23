@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 
 
-const Navbar = (props) => {
+const Navbar = () => {
     //usestate for responsive
     const [isOpen, setIsOpen] = useState(false);      //set to  false toggle button
 
@@ -16,10 +16,12 @@ const Navbar = (props) => {
     return (
         <>
             <div className='bg-black '>
-                <div className='max-w-8xl  items-center justify-between flex mx-auto py-4  text-white px-10'>
+
+                {/* for large devices */}
+                <div className='max-w-7xl  items-center justify-between flex mx-auto py-4  text-white px-10'>
                     <h1 className='font-semibold text-xl'>ONLINE STORE</h1>
 
-                    <div className='hidden md:flex md:space-x-8 font-bold  items-center '>
+                    <div className='hidden lg:flex lg:space-x-8 font-bold  items-center '>
                         <NavLink to="/" className={getActiveLink('/')}>Home</NavLink>
                         <NavLink to="/products" className={getActiveLink('/products')}>Products</NavLink>
                         <NavLink to="/about" className={getActiveLink('/about')}>About</NavLink>
@@ -48,17 +50,18 @@ const Navbar = (props) => {
 
 
                     </div>
-                </div>
+                
 
+                {/* for small devices */}
                 {/* if toggle button is open */}
-                <button className='md:hidden' onClick={() => setIsOpen(!isOpen)}>
+                <button className='lg:hidden' onClick={() => setIsOpen(!isOpen)} >
                     {isOpen ? (
 
-                        <div className="fixed z-10 lg:hidden inset-0 bg-slate-900 ">
+                        <div className="fixed z-10 lg:hidden inset-0 bg-slate-900 text-white">
 
                             <div className="nav-bar flex justify-between  mx-auto p-4 items-center">
                                 <h1 className='font-semibold text-xl'> ONLINE STORE</h1>
-                                <i className="fa-solid fa-square-xmark text-2xl"></i>    {/* close icon */}
+                                <i className="fa-solid fa-square-xmark text-2xl "></i>    {/* close icon */}
                             </div>
 
                             <div className='py-8 px-10 flex flex-col space-y-5 '>
@@ -76,14 +79,17 @@ const Navbar = (props) => {
                                     <NavLink to="/signup" className={getActiveLink('/signup')} >SignUp</NavLink>
                                 </div>
 
-                                <NavLink to="/contact" className={getActiveLink('/contact')}>
+                                <NavLink to="/cart" className={getActiveLink('/cart')}>
                                     <i className="fa-solid fa-cart-shopping text-xl"></i>
                                 </NavLink>
                             </div>
                         </div>) :
-                        <i className="fa-solid fa-bars text-xl text-white"></i>
-                    }
+
+                        (
+                         <i className="fa-solid fa-bars text-xl text-white"></i> 
+                        )}
                 </button >
+            </div>
             </div>
         </>
     );

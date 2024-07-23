@@ -10,6 +10,7 @@ const ProductContext = createContext();
 const API = "https://api.pujakaitem.com/api/products";
 
 //set object into initialState
+// set all initialState data into state 
 const initialState = {
     
     //set defalut object for feature products
@@ -21,11 +22,12 @@ const initialState = {
     //set defalut object for single products
     isSingleLoading: false,
     singleproductData: {},
-    isSingleError: false
+    isSingleError: false,
+   
 }
 
 
-//create ProductProvider
+//create Provider
 const ProductProvider = ({ children }) => {
 
     //dispatch give order to action for do work as per instuctions -- action pass as a argument at ProductReducer function
@@ -39,9 +41,9 @@ const ProductProvider = ({ children }) => {
         try {
             const response = await axios.get(url);  //getting data from api
             // console.log(response)
-            const productData = await response.data;  //destructure only data from whole response
-            console.log(productData)
-            dispatch({ type: "PRODUCT_API", payload: productData })  //in payload pass the data which required for do that work
+            const products = await response.data;  //destructure only data from whole response
+            // console.log(productData)
+            dispatch({ type: "PRODUCT_API", payload: products })  //in payload pass the data which required for do that work
         }
         catch (error) {
             dispatch({ type: "API_ERROR" })
@@ -57,7 +59,7 @@ const ProductProvider = ({ children }) => {
             const response = await axios.get(url);  //getting data from api
             // console.log(response)
             const singleproductData = await response.data;  //destructure only data from whole response
-            console.log(singleproductData)
+            // console.log(singleproductData)
             dispatch({ type: "SINGLE_PRODUCT_API", payload: singleproductData })  //in payload pass the data which required for do that work
         }
         catch (error) {
@@ -72,9 +74,9 @@ const ProductProvider = ({ children }) => {
     }, [])
 
     // set all initialState data into state and passing value through that data
-    return <ProductContext.Provider value={{ ...state, getsingleProducts }}>
+    return (<ProductContext.Provider value={{ ...state, getsingleProducts }}>
         {children}
-    </ProductContext.Provider>
+    </ProductContext.Provider>)
 }
 
 //custom hook
@@ -82,3 +84,4 @@ const useCustomProductContext = () => {
     return useContext(ProductContext)
 }
 export { ProductProvider, ProductContext, useCustomProductContext };
+

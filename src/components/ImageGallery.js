@@ -10,18 +10,18 @@ const ImageGallery = ({ image = [{ url: "" }] }) => {
     return (
         <>
             {/* div for image gallery main box in which include all images */}
-            <div className="grid grid-cols-2">
+            <div className="grid lg:grid-cols-2 lg:gap-16 xl:gap-1 ">
 
                 {/* div for array of images */}
-                <div className="grid grid-rows-4 gap-2 ">
+                <div className="grid grid-cols-2 lg:grid-cols-1 lg:grid-rows-4 gap-2 ">
                     {
-                        image.map((imageElem) => {
-                            return <figure>
+                        image.map((imageElem, index) => {
+                            return <figure  key={index}>
                                 <img
-                                    key={imageElem.id}
+                                   
                                     src={imageElem.url}
                                     onClick={() => setmainImage(imageElem)}  //when click on any img update that img into main img
-                                    className='h-32 w-56  hover:border-2 hover:border-gray-500 hover:px-1 hover:py-1 hover:rounded-md' />
+                                    className='w-full h-36 md:h-48 lg:h-32 lg:w-56  hover:border-2 hover:border-gray-500 hover:px-1 hover:py-1 hover:rounded-md' />
                             </figure>
                         })
                     }
@@ -29,7 +29,7 @@ const ImageGallery = ({ image = [{ url: "" }] }) => {
 
                 {/* div for main  image*/}
                 <div className='flex items-center justify-center'>
-                    <img src={mainImage.url} className='h-56 w-full mr-24' />  
+                    <img src={mainImage.url} className='lg:h-56 md:h-72 w-full mt-3 lg:mr-24' />  
                 </div>
 
             </div>

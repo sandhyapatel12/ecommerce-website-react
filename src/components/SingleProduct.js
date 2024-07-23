@@ -16,7 +16,7 @@ const SingleProduct = () => {
 
   //destructure object from productContex which return through CustomProductContext
   const { isSingleLoading, getsingleProducts, singleproductData } = useCustomProductContext();
-  console.log(singleproductData)
+  // console.log(singleproductData)
 
   //destructure id from usePrams which provided by react-router-dom
   const { id } = useParams();
@@ -41,7 +41,7 @@ const SingleProduct = () => {
     <>
       <PageNavigation name={name} />
 
-      <div className='grid grid-cols-2 gap-5 max-w-7xl mx-auto mt-5 justify-center items-center ' >
+      <div className='grid grid-cols-1 p-4 lg:grid-cols-2 gap-5 max-w-7xl mx-auto mt-5 justify-center items-center  ' >
 
         {/* display image gallery */}
         <div className=''>
