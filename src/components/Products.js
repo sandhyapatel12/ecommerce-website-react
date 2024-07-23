@@ -53,7 +53,7 @@ const ProductPage = () => {
 
                 (
                   <div className='flex space-x-3 text-green-800'>
-                    <i class="fa-solid fa-filter text-xl "></i>
+                    <i className="fa-solid fa-filter text-xl "></i>
                     <p className='font-bold '>Filter Products</p>
                   </div>
                 )}

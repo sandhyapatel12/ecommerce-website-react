@@ -1,10 +1,15 @@
 import React from 'react'
 import FormatPrice from '../helper/FormatPrice'
 import AmountToggle from './AmountToggle'
+import { useCustomcartContext } from '../context/AddCartContext'
 
 const CartItem = ({ id, name, image, productColor, price, productQuantity }) => {
 
-    
+    //destructure
+    const {removeProduct} = useCustomcartContext();
+    // console.log(removeProduct)
+
+
     //usestate for set productQuantity
     // const [productQuantity, setproductQuantity] = useState(1)
 
@@ -23,51 +28,53 @@ const CartItem = ({ id, name, image, productColor, price, productQuantity }) => 
         <>
             <div className="container mx-auto max-w-7xl">
 
-                <div className="grid grid-cols-5 gap-5  font-semibold mb-2 mt-5 ">
+              
 
+                {/* div for small devices */}
+                <div className='grid grid-cols-2 border border-green-800 rounded-md mt-5 md:max-w-xl lg:max-w-2xl mx-auto'>
 
-                    {/* items */}
-                    <div className=''>
-
+                    {/* product image */}
+                    <div className='w-full py-2 px-3 space-y-2'>
                         <figure>
-                            <img src={image} className='h-20 w-36' />
+                            <img src={image} className='h-28  ' />
                         </figure>
+                        
+                        <button onClick={() => removeProduct(id)} 
+                        className='bg-yellow-500 font-semibold px-5 py-1 w-fit rounded-md'>Remove</button>
 
+                    </div>
 
-                        <div className='mt-2'>
+                    <div className='w-full py-2  space-y-1'>
+                        {/* product name */}
+                        <p className='text-lg font-semibold'>{name}</p>
 
-                            <p>{name}</p>
-
-                            <div className='flex items-center space-x-2'>
-
-                                <p >color:</p>
-                                <p style={{ backgroundColor: productColor, color: productColor }} className='h-4 w-4 rounded-full overflow-hidden'>color: {productColor}</p>
-
-                            </div>
-
+                        {/* color */}
+                        <div className='flex items-center space-x-2'>
+                            <p >color:</p>
+                            <p style={{ backgroundColor: productColor, color: productColor }} className='h-4 w-4 rounded-full overflow-hidden'>color: {productColor}</p>
                         </div>
+
+                        {/* price */}
+                        <p className='text-lg font-extrabold'><FormatPrice price={price} /></p>
+
+                        {/* quantity  */}
+                        <div className=''>
+                            <AmountToggle
+                                productQuantity={productQuantity}
+                                setIncrese={setIncrese}
+                                setDecrese={setDecrese} />
+                        </div>
+
+
+                        {/* Subtotal */}
+                        <p className='font-bold'>Total: <FormatPrice price={price * productQuantity} /></p>
+
+
+
                     </div>
-
-                    {/* price */}
-
-
-                    <p className='text-center'><FormatPrice price={price} /></p>
-
-                    {/* quantity  */}
-                    <div className='ml-12'>
-                        <AmountToggle
-                            productQuantity={productQuantity}
-                            setIncrese={setIncrese}
-                            setDecrese={setDecrese} />
-                    </div>
-
-                    {/* Subtotal */}
-                    <p className='text-center'><FormatPrice price={price * productQuantity} /></p>
-
-                    {/* remove */}
-                    <i className="fa-solid fa-trash text-lg text-green-700 cursor-pointer hover:text-green-800 text-center"></i>
 
                 </div>
+
             </div>
 
 
