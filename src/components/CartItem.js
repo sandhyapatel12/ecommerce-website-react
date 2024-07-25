@@ -6,24 +6,8 @@ import { useCustomcartContext } from '../context/AddCartContext'
 const CartItem = ({ id, name, image, productColor, price, productQuantity }) => {
 
     //destructure
-    const {removeProduct} = useCustomcartContext();
-    // console.log(removeProduct)
-
-
-    //usestate for set productQuantity
-    // const [productQuantity, setproductQuantity] = useState(1)
-
-    const setIncrese = () => {
-        // if productQuantity == or smaller than stock --> than user increse quantity of productQuantity when stock value = productQuantity then not increse
-        // productQuantity < stock ? setproductQuantity(productQuantity + 1) : setproductQuantity(stock)
-
-    }
-
-    const setDecrese = () => {
-        //if productQuantity more than 1 --> than user can decrese quantity into productQuantity when remain product 1 otherwise not decrese
-        // productQuantity > 1 ? setproductQuantity(productQuantity - 1) : setproductColor(1)
-    }
-
+    const {removeProduct, setIncrese, setDecrese } = useCustomcartContext();
+    
     return (
         <>
             <div className="container mx-auto max-w-7xl">
@@ -61,8 +45,8 @@ const CartItem = ({ id, name, image, productColor, price, productQuantity }) => 
                         <div className=''>
                             <AmountToggle
                                 productQuantity={productQuantity}
-                                setIncrese={setIncrese}
-                                setDecrese={setDecrese} />
+                                setIncrese={() => setIncrese(id)}
+                                setDecrese={() => setDecrese(id)} />
                         </div>
 
 
