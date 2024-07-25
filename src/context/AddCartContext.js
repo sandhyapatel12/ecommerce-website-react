@@ -4,14 +4,13 @@ import AddCartReducer from "../reducer/AddCartReducer";
 //create context api
 const AddCartContext = createContext();
 
-const getLocalCartData = () =>
-{
+const getLocalCartData = () => {
     let localCartData = localStorage.getItem("AddtoCart")
-    if(localCartData == [])  //when page first time render get empty array
+    if (localCartData == [])  //when page first time render get empty array
     {
         return [];
     }
-    else{
+    else {
         return JSON.parse(localCartData)  //convert data into javascript object
     }
 }
@@ -22,7 +21,7 @@ const initialState =
     cart: getLocalCartData(),  //function for store data into localstorage
     total_items: "",    //includes all items which is display in navbar in cart icon 
     total_price: "",    //includes final price of all items
-    shipping_fee: 50000,
+    shipping_fee: 500,
 }
 
 //create provider
@@ -38,40 +37,39 @@ const AddCartProvider = ({ children }) => {
     }
 
     //increament product into cart
-    const setIncrese = (id) =>
-    {
-        dispatch({ type: "INCRESE_QUANTITY", payload: id})
+    const setIncrese = (id) => {
+        dispatch({ type: "INCRESE_QUANTITY", payload: id })
     }
 
     //decrement product into cart
-    const setDecrese = (id) =>
-    {
-        dispatch({ type: "DECRESE_QUANTITY", payload: id})
+    const setDecrese = (id) => {
+        dispatch({ type: "DECRESE_QUANTITY", payload: id })
 
     }
 
     //remove products from cart
-    const removeProduct = (id) =>
-    {
-        dispatch({type: "REMOVE_PRODUCT", payload:id })
+    const removeProduct = (id) => {
+        dispatch({ type: "REMOVE_PRODUCT", payload: id })
     }
 
     //clear all the products from cart
-    const clearCart = () =>
-    {
-        dispatch({type: "CLEAR_CART"})
+    const clearCart = () => {
+        dispatch({ type: "CLEAR_CART" })
     }
 
     //add data into local stroage
     useEffect(() => {
         //store data as a key value pair
         //can't use cart directly because cart includes in initialstate and initial state in our actual state so use also "state.cart"
-        localStorage.setItem("AddtoCart", JSON.stringify(state.cart) )  //convert cart into string because in local storage data store in string formate 
+        localStorage.setItem("AddtoCart", JSON.stringify(state.cart))  //convert cart into string because in local storage data store in string formate 
 
         //display cart total items which is in navbar
-        dispatch({type: "CART_TOTAL_ITEMS"})
+        dispatch({ type: "CART_TOTAL_ITEMS" })
+
+        //display cart total price which is display in grand total box
+        dispatch({ type: "CART_TOTAL_PRICE" })
     }, [state.cart])
-    
+
 
     // set all initialState data into state and passing value through that data
     return (<AddCartContext.Provider value={{ ...state, AddtoCartFunc, removeProduct, clearCart, setIncrese, setDecrese }}>
@@ -84,4 +82,4 @@ const useCustomcartContext = () => {
     return useContext(AddCartContext)
 }
 
-export { useCustomcartContext, AddCartProvider};
+export { useCustomcartContext, AddCartProvider };

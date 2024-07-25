@@ -22,8 +22,8 @@ const Navbar = () => {
             <div className='bg-black '>
 
                 {/* for large devices */}
-                <div className='max-w-7xl  items-center justify-between flex mx-auto py-4  text-white px-10'>
-                    <h1 className='font-semibold text-xl'>ONLINE STORE</h1>
+                <div className='max-w-7xl  items-center justify-between flex mx-auto py-4  text-white px-10  '>
+                    <h1 className='font-extrabold text-2xl text-green-700'>ONLINE STORE</h1>
 
                     <div className='hidden lg:flex lg:space-x-8 font-bold  items-center '>
                         <NavLink to="/" className={getActiveLink('/')}>Home</NavLink>

@@ -138,22 +138,38 @@ const AddCartReducer = (state, action) => {
         }
     }
 
-    if(action.type === "CART_TOTAL_ITEMS")
-    {
-        let cartTotalItem = state.cart.reduce((initialValue, curElem) =>
-        {
+    if (action.type === "CART_TOTAL_ITEMS") {
+        let cartTotalItem = state.cart.reduce((initialValue, curElem) => {
             //destructure -- in productQuantity includes all items so we can get total items
-            let {productQuantity} = curElem;
+            let { productQuantity } = curElem;
 
             initialValue = initialValue + productQuantity
             return initialValue;
         }, 0)
 
-        return{
-            ...state,
+        return {
+            ...state,  //already define state remain as it is
             total_items: cartTotalItem
         }
     }
+
+    if (action.type === "CART_TOTAL_PRICE") {
+
+        let cartTotalPrice = state.cart.reduce((initialValue, curElem) => {
+
+            //destructure -- in productQuantity and price includes all items quantity and price so we can get total price
+            let { productQuantity, price } = curElem;
+
+            initialValue = initialValue + productQuantity * price
+            return initialValue;
+
+        }, 0)
+        return {
+            ...state,  //already define state remain as it is
+            total_price: cartTotalPrice
+        }
+    }
+
 
     return state;
 }

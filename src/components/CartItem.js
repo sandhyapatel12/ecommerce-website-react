@@ -6,13 +6,11 @@ import { useCustomcartContext } from '../context/AddCartContext'
 const CartItem = ({ id, name, image, productColor, price, productQuantity }) => {
 
     //destructure
-    const {removeProduct, setIncrese, setDecrese } = useCustomcartContext();
-    
+    const { removeProduct, setIncrese, setDecrese } = useCustomcartContext();
+
     return (
         <>
             <div className="container mx-auto max-w-7xl">
-
-              
 
                 {/* div for small devices */}
                 <div className='grid grid-cols-2 border border-green-800 rounded-md mt-5 md:max-w-xl lg:max-w-2xl mx-auto'>
@@ -22,9 +20,9 @@ const CartItem = ({ id, name, image, productColor, price, productQuantity }) => 
                         <figure>
                             <img src={image} className='h-28  ' />
                         </figure>
-                        
-                        <button onClick={() => removeProduct(id)} 
-                        className='bg-yellow-500 font-semibold px-5 py-1 w-fit rounded-md'>Remove</button>
+
+                        <button onClick={() => removeProduct(id)}
+                            className='bg-yellow-500 font-semibold px-5 py-1 w-fit rounded-md'>Remove</button>
 
                     </div>
 
