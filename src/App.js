@@ -8,6 +8,8 @@ import About from './components/About';
 import Cart from './components/Cart';
 import Navbar from './components/Navbar';
 import ErrorPage from './components/ErrorPage';
+import Login from './components/Login';
+import SignUp from './components/SignUp'
 
 const App = () => {
   return (
@@ -20,11 +22,11 @@ const App = () => {
       <Route path='/products' element={<Products />} />
       <Route path='/about' element={<About />} />
       <Route path='/contact' element={<Contact />} />
-      <Route path='/singleproduct/:id' element={<SingleProduct/>} />
+      <Route path='/login' element={<Login/>} />
+      <Route path='/signup' element={<SignUp />} />
       <Route path='/cart' element={<Cart />} />
+      <Route path='/singleproduct/:id' element={<SingleProduct/>} />
       <Route path='*' element={<ErrorPage />} />
-      
-
     </Routes>
   </Router>
  </>

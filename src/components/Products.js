@@ -32,13 +32,11 @@ const ProductPage = () => {
 
           <div className='lg:hidden border border-green-800 px-5 py-2 rounded-md sm:w-fit'>
 
-            {/* <i className="fa-solid fa-filter"></i> */}
-
             <button className='lg:hidden' onClick={() => setIsOpen(!isOpen)} >
               {isOpen ? (
 
                 // div for filter section
-                <div className="fixed z-10 lg:hidden inset-0 bg-gray-900 text-white w-fit">
+                <div className="fixed z-10 lg:hidden inset-0 duration-200		 bg-gray-100  transition-all ease-linear	 w-fit">
 
                   <div className="flex justify-between  mx-auto p-4 items-center">
                     <h1 className='font-semibold text-xl'> Filter Products</h1>

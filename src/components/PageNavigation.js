@@ -13,7 +13,7 @@ const PageNavigation = ({ name, id }) => {
   return (
     <>
       <div className='max-w-8xl  items-center font-semibold flex mx-auto py-4  bg-gray-200 px-10'>
-        <NavLink to='/' className={`hover:text-green-600 getActiveLink('/')`}>
+        <NavLink to='/' className={`hover:text-green-600 ${getActiveLink('/')}`}>
           Home
         </NavLink> /
         <NavLink to='/?id=${id}' className={`hover:text-green-600 {getActiveLink('/?id=${id}}')`} >

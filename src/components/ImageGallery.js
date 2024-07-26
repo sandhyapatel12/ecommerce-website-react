@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 
 //set image url empty (because of error map undefined) ->image is an array[], image define as object{} image property url  -> [{ url: "" }]
 const ImageGallery = ({ image = [{ url: "" }] }) => {
-    // console.log(image);  //get 4 image
 
     //usestate for set main image
     const [mainImage, setmainImage] = useState(image[0])

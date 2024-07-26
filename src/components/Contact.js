@@ -11,8 +11,9 @@ const Contact = () => {
       <h2 className="text-2xl font-bold mb-6 text-center mt-10">Contact Us</h2>
 
       <div className='grid grid-cols-1 md:grid-cols-2 gap-5 justify-center max-w-7xl px-10 mx-auto items-center '>
+
         {/* goto google map -> goto your specific location -> click on share -> Embed a map -> copy link and paste it here */}
-        <iframe className='w-full' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d235013.74842920963!2d72.41492881144384!3d23.020474101422135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e848aba5bd449%3A0x4fcedd11614f6516!2sAhmedabad%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1721130214599!5m2!1sen!2sin" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe className='w-full' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d235013.74842920963!2d72.41492881144384!3d23.020474101422135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e848aba5bd449%3A0x4fcedd11614f6516!2sAhmedabad%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1721130214599!5m2!1sen!2sin" height="450" allowfullscreen="true" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 
         {/* contact data show into your mail through bellow  action link   --  // Make sure to run npm install @formspree/react*/}

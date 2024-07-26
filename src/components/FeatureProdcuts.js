@@ -6,12 +6,13 @@ const FeatureProdcuts = () => {
 
   //destructure object from productContex which return through CustomProductContext
   const { isLoading, featureProdcuts } = useCustomProductContext();
-  // console.log("featureProdcuts", featureProdcuts)
-
-  //if products are not display
-  if (isLoading) {
-    return <div>loading....</div>
-  }
+  
+ //if products are not display
+ if (isLoading) {
+   return <div className='flex items-center justify-center mt-56 '>
+   <img src='../images/loading.gif' />
+ </div>
+ }
   return (
     <>
       <h2 className="text-2xl font-bold mb-6 text-center mt-10">Feature Prodcuts</h2>

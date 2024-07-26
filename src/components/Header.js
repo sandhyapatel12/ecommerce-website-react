@@ -1,10 +1,11 @@
 import React from 'react';
 import Button from './Button';
+import { NavLink } from 'react-router-dom';
 
-const Header = ({sendData}) => {
+const Header = ({ sendData }) => {
 
-    //object destructure(which is created at Home.js)   title,desc from sendData
-    const {title, desc, img} = sendData;
+  //object destructure(which is created at Home.js)   title,desc from sendData
+  const { title, desc, img } = sendData;
 
   return (
     <header className=" py-8 mt-10">
@@ -13,14 +14,16 @@ const Header = ({sendData}) => {
         <div className="text-center md:text-left md:w-1/2">
           <h1 className="text-4xl font-bold mb-4">{title}</h1>
           <p className="text-lg mb-6">{desc}</p>
-           <Button buttonTitle={'Shop Now'} />  
+          <NavLink to='/products'>
+            <Button buttonTitle={'Shop Now'} />
+          </NavLink>
         </div>
-        
+
         {/* Right side: image */}
         <div className="mt-6 md:mt-0 md:w-1/2 flex justify-center">
-        <figure>
-             {img}
-        </figure>
+          <figure>
+            {img}
+          </figure>
         </div>
       </div>
     </header>

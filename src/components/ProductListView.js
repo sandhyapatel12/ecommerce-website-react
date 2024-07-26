@@ -2,8 +2,19 @@ import React from 'react'
 import FormatPrice from '../helper/FormatPrice'
 import { NavLink } from 'react-router-dom'
 import Button from './Button'
+import { useCustomProductContext } from '../context/ProductContext'
 
 const ProductListView = ({ filterProducts }) => {
+  //destructure object from productContex which return through CustomProductContext
+  const { isLoading } = useCustomProductContext();
+  // console.log("featureProdcuts", featureProdcuts)
+
+  //if products are not display
+  if (isLoading) {
+    return <div className='flex items-center justify-center mt-56 '>
+    <img src='../images/loading.gif' />
+  </div>
+  }
   return (
     <>
       {/* div for main box in which display all products in listview */}
