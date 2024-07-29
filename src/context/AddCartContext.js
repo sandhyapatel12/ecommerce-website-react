@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 import AddCartReducer from "../reducer/AddCartReducer";
+import { json } from "react-router-dom";
 
 //create context api
 const AddCartContext = createContext();
@@ -13,6 +14,10 @@ const getLocalCartData = () => {
     else {
         return JSON.parse(localCartData)  //convert data into javascript object
     }
+    //if above cant not work then use it
+    // const parsedData = JSON.parse(localCartData);
+    // if(!Array.isArray(parsedData)) return [];
+    //     return parsedData;
 }
 
 const initialState =

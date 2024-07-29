@@ -7,7 +7,7 @@ const Sort = () => {
   const { filterProducts, gridView, setGridView, setListView , sorting} = useCustomFilter();
   return (
     <>
-      <div className='flex justify-between border border-green-800 rounded-md px-2 lg:px-10 mb-3 py-3 items-center'>
+      <div className=' flex justify-between border border-green-800 rounded-md px-2 lg:px-10 mb-3 py-3 items-center'>
 
         {/* div for grid-list view */}
         <div className='hidden md:flex md:space-x-2'>

@@ -62,7 +62,7 @@ const AddtoCart = ({ singleproductData }) => {
             </div>
 
             {/* div for add to cart button  */}
-            <div className='mt-10'>
+            <div className='mt-10 '>
                 <NavLink to='/cart' onClick={() => AddtoCartFunc(id, productColor, productQuantity, singleproductData)}>
                     <Button buttonTitle={'Add to Cart'} />
                 </NavLink>

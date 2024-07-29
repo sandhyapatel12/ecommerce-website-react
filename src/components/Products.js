@@ -11,39 +11,42 @@ const ProductPage = () => {
 
   return (
     //outer box
-    <div className='max-w-7xl mx-auto items-center mt-5 lg:px-5 '>
+    <div className=' flex justify-center lg:mb-10 '>
 
       {/* div for outer product box in which include two sections */}
 
-      <div className="flex ">
+      <div className="max-w-7xl lg:w-full lg:flex ">
 
         {/* Left Side: filter section */}
-        <div className="hidden lg:flex lg:w-1/4 p-8 bg-gray-100 mt-5 rounded-md   justify-center ">
+       
+        <div className='hidden lg:flex lg:w-1/5  '>
           <FilterSection />
         </div>
 
         {/* Right Side: Products */}
-        <div className="w-full lg:w-3/4 p-4">
+        <div className="  px-3 lg:px-10  lg:ml-32  lg:w-full xl:w-4/5 xl:ml-20  ">
 
           {/* Right Side: row 1 */}
-          <div>
+          <div className='mt-10'>
             <Sort />
           </div>
 
+
+          {/* for smaller devices */}
           <div className='lg:hidden border border-green-800 px-5 py-2 rounded-md sm:w-fit'>
 
             <button className='lg:hidden' onClick={() => setIsOpen(!isOpen)} >
               {isOpen ? (
 
                 // div for filter section
-                <div className="fixed z-10 lg:hidden inset-0 duration-200		 bg-gray-100  transition-all ease-linear	 w-fit">
+                <div className="fixed overflow-y-scroll top-16   z-10 lg:hidden inset-0 duration-200		 bg-gray-100  transition-all ease-linear	 w-fit">
 
                   <div className="flex justify-between  mx-auto p-4 items-center">
                     <h1 className='font-semibold text-xl'> Filter Products</h1>
                     <i className="fa-solid fa-square-xmark text-2xl  "></i>
                   </div>
 
-                  <div className="flex rounded-md p-5   justify-center   ">
+                  <div className=" flex  rounded-md p-5   justify-center   ">
                     <FilterSection />
                   </div>
 
@@ -60,16 +63,12 @@ const ProductPage = () => {
           </div>
 
           {/* Right Side: row 2 */}
-          <div className='mt-3'>
+          <div className='mt-3 '>
             <ProductList />
           </div>
 
         </div>
       </div>
-
-      {/* for small devices */}
-      {/* if toggle button is open */}
-
     </div>
   );
 };

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { useCustomcartContext } from '../context/AddCartContext';
+import { useAuth0 } from "@auth0/auth0-react";
+
 
 const Navbar = () => {
     //usestate for responsive
@@ -9,12 +11,16 @@ const Navbar = () => {
     //destructure total_items  that display total items in cart icon which is display on navbar
     const { total_items } = useCustomcartContext();
 
+    const { loginWithRedirect, logout, isAuthenticated , user} = useAuth0();
+
+
     return (
         <>
-            <div className='bg-black '>
+            <div className='bg-black sticky top-0 left-0 right-0 '>
+            {/* <div className='bg-black'> */}
 
                 {/* for large devices */}
-                <div className='max-w-7xl  items-center justify-between flex mx-auto py-4  text-white px-10  '>
+                <div className='max-w-7xl  items-center justify-between flex mx-auto py-4  text-white px-3 lg:px-10  '>
                     <h1 className='font-extrabold text-2xl text-green-700'>ONLINE STORE</h1>
 
                     <div className='hidden lg:flex lg:space-x-8 font-bold  items-center '>
@@ -25,13 +31,18 @@ const Navbar = () => {
                         <NavLink to="/about" className={({ isActive }) => isActive ? "text-green-800" : 'text-white hover:text-gray-500'}>About</NavLink>
                         <NavLink to="/contact" className={({ isActive }) => isActive ? "text-green-800" : 'text-white hover:text-gray-500'}>Contact</NavLink>
 
-                        <div className='border-2 border-gray-500 px-5 py-2 font-bold rounded-lg'>
-                            <NavLink to="/login" className={({ isActive }) => isActive ? "text-green-800" : 'text-white hover:text-gray-500'} >Login</NavLink>
-                        </div>
-
-                        <div className='border-2 border-gray-500 px-5 py-2 font-bold rounded-lg'>
-                            <NavLink to="/signup" className={({ isActive }) => isActive ? "text-green-800" : 'text-white hover:text-gray-500'} >SignUp</NavLink>
-                        </div>
+                        {/* if user login into app then display logout button otherwise login button */}
+                        {
+                            isAuthenticated ? (
+                                <div className='border-2 border-gray-500 px-5 py-2 font-bold rounded-lg'>
+                                    <NavLink to="/logout" onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })} className={({ isActive }) => isActive ? "text-green-800" : 'text-white hover:text-gray-500'} >logout</NavLink>
+                                </div>
+                            ) :
+                                (<div className='border-2 border-gray-500 px-5 py-2 font-bold rounded-lg'>
+                                    <NavLink onClick={() => loginWithRedirect()}
+                                        to="/login" className={({ isActive }) => isActive ? "text-green-800" : 'text-white hover:text-gray-500'} >Login</NavLink>
+                                </div>)
+                        }
 
                         <NavLink to="/cart" className={({ isActive }) => isActive ? "border border-green-700 rounded-md py-1 px-2" : 'text-white hover:text-gray-200'}>
                             <div className='flex '>
@@ -45,9 +56,9 @@ const Navbar = () => {
                             </div>
 
                         </NavLink>
-
-
                     </div>
+
+                  
 
 
                     {/* for small devices */}

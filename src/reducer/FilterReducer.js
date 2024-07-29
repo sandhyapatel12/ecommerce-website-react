@@ -15,7 +15,7 @@ const FilterReducer = (state, action) => {
             // console.log(maxPrice)
 
             // 3 way
-            let maxPr̥ice = Math.max(...priceData)
+            let maxPrice = Math.max(...priceData)
             // console.log("🚀 ~ FilterReducer ~ maxpr̥ice:", maxPr̥ice)
 
 
@@ -23,7 +23,7 @@ const FilterReducer = (state, action) => {
                 ...state,  //which is define at productcontext that state remain as it is  
                 filterProducts: [...action.payload],  //... spread operator used because when user filter data main product remain as it is
                 allProducts: [...action.payload],
-                filterData: { ...state.filterData, maxPr̥ice, price: maxPr̥ice }  //update maxprice and price value
+                filterData: { ...state.filterData, maxPrice, price: maxPrice }  //update maxprice and price value
             }
         case "SET_GRID_VIEW":
 
@@ -123,16 +123,16 @@ const FilterReducer = (state, action) => {
 
             //when user find products throught out category
             if (category !== "all") {
-                tempFilterData = tempFilterData.filter((curCategory) => {
-                    return curCategory.category === category;  //used name because name is a text -> includes function can incluse all element which remain in products name
-                })
+                tempFilterData = tempFilterData.filter(
+                    (curCategory) => curCategory.category === category  //used name because name is a text -> includes function can incluse all element which remain in products name
+                )
             }
 
             //when user find products throught out company
             if (company !== "all") {
-                tempFilterData = tempFilterData.filter((curCompany) => {
-                    return curCompany.company.toLowerCase() === company.toLowerCase()  //used name because name is a text -> includes function can incluse all element which remain in products name
-                })
+                tempFilterData = tempFilterData.filter((curCompany) => 
+                     curCompany.company.toLowerCase() === company.toLowerCase()  //used name because name is a text -> includes function can incluse all element which remain in products name
+                )
             }
 
             //when user find products throught out colors
@@ -170,9 +170,9 @@ const FilterReducer = (state, action) => {
                     category: "all",
                     company: "all",
                     colorData: "all",
-                    // maxPrice:0,
-                    // minPrice:state.filterData.maxPrice,
-                    // price: state.filterData.maxPrice
+                    maxPrice:0,
+                    minPrice:state.filterData.maxPrice,
+                    price: state.filterData.maxPrice
                 }
             }
 

@@ -10,8 +10,8 @@ const FilterContext = createContext();
 const initialState = {
     filterProducts: [],  //all api data included
     allProducts: [],  //all api data included
-    gridView: true,
-    sortingValue: "lowest",
+    gridView: true,  //display products in gridview
+    sortingValue: "lowest",  //user can get products using sorting
     filterData: {
         text: " ", //for search bar
         category: "all",
@@ -20,7 +20,6 @@ const initialState = {
         maxPrice: 0,
         price: 0,
         minPrice: 0,
-
     }
 }
 

@@ -8,7 +8,7 @@ const Header = ({ sendData }) => {
   const { title, desc, img } = sendData;
 
   return (
-    <header className=" py-8 mt-10">
+    <header className=" py-8 mt-2">
       <div className="container max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between px-10">
         {/* Left side: title, description, and button */}
         <div className="text-center md:text-left md:w-1/2">
