@@ -16,7 +16,7 @@ const initialState = {
         text: " ", //for search bar
         category: "all",
         company: "all",
-        colorData: "all",
+        colorVal: "all",
         maxPrice: 0,
         price: 0,
         minPrice: 0,

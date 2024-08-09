@@ -169,7 +169,7 @@ const FilterReducer = (state, action) => {
                     text: " ", //for search bar
                     category: "all",
                     company: "all",
-                    colorData: "all",
+                    colorVal: "all",
                     maxPrice:0,
                     minPrice:state.filterData.maxPrice,
                     price: state.filterData.maxPrice

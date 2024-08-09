@@ -1,7 +1,6 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useReducer } from "react";
 import ProductReducer from "../reducer/ProductReducer";
-import { type } from "@testing-library/user-event/dist/type";
 
 //create context api
 const ProductContext = createContext();
